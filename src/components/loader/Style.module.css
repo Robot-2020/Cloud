@@ -1,0 +1,48 @@
+.line {
+    height: fit-content;
+    overflow: hidden;
+    /* display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:2vw */
+}
+
+.animateh2 {
+  display: inline-block;
+  animation: slide-in 0.5s ease-out, pulse 1s ease-in-out infinite;
+  animation-delay: 1s, 1.5s; /* 滑入动画 先执行，跳动动画 延迟 1 秒开始 */
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes anime {
+    0% {
+        font-family: 'PlinaReg';        
+    }
+    
+    100% {
+        font-family: 'silkSerifReg';
+        -webkit-text-stroke: 1px #fff;
+        color: transparent;
+    }
+}
