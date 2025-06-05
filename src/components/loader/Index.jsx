@@ -26,7 +26,7 @@ function Loader() {
                 // 如果 grow 达到 100，直接设置为 100
                 h5timer.innerHTML = grow;
             }
-        }, 48); // 36 毫秒后执行一次
+        }, 36); // 36 毫秒后执行一次
 
     }, []); // 只有在组件加载时执行一次
 
@@ -35,15 +35,16 @@ function Loader() {
         const tl = gsap.timeline();
 
         // 定义第一个动画，选择所有 class 为 .line 下的 h1 元素
-        // h2字体浅入效果
         tl.from('.line h1', {
             y: 150, // 从 y=150 开始，元素向上移动
-            stagger: 0.25, // 每个元素之间有 0.3 秒的延迟
-            duration: 0.5, // 每个动画持续 1 秒
+            stagger: 0.25, // 减少延迟
+            duration: 0.5,
+            ease: "power2.out",
+            willChange: "transform",
         });
 
-        // 定义第二个动画，选择所有 .line 下的 h2 和 h6 元素
-        // NOW 和 Please wait 字体浅入效果
+        // 定义第二个动画，选择所有 .line 下的 h2 元素
+        // NOW 字体浅入效果
         tl.from('.line h2', {
             opacity: 0, // 元素从透明度 0 开始，逐渐显示
         });
@@ -52,18 +53,48 @@ function Loader() {
         tl.to('.loader', {
             opacity: 0, // 逐渐将透明度设置为 0
             duration: 0.5, // 动画持续时间 0.5 秒
-            delay: 2, // 延迟 2 秒后开始动画
+            delay: 1.3, // 延迟 1.3 秒后开始动画
         });
 
         // 定义第四个动画，隐藏 .loader 元素
         tl.to('.loader', {
             display: 'none', // 动画完成后，将 display 属性设为 none，将元素移出视图
         });
+
+        tl.from('.page1', {
+            y: 1200,
+            opacity: 0,
+            duration: 0.4,
+            delay: 0.1,
+            ease: Power4
+        })
+
+        tl.from('.inner', {
+            opacity:0
+        })
+
+        tl.from('.firstword', {
+           opacity: 0
+        })
+
+        tl.from('#hero1 h1, #hero2 h1, #hero3 h2, .hero h3, #hero4 h1', {
+            y: 180,
+            stagger: 0.2,
+        })
+        
+        tl.from('.page2 .page3', {
+            y: 800,
+            opacity: 0,
+            duration: 0.4,
+            delay: 0.1,
+            ease: Power4
+        })
     });
 
 
   return ( 
-    <div>
+    // TODO: Add a loading animation to fix the other pages loading issue
+    <div className='display flex position fixed top-0 left-0 w-full h-full z-[1000]'>   
         <div className='loader w-full h-full bg-[#0b0b0b] fixed font-[PlinaReg]
             px-[5vw] py-[5vw] leading-[7.8vw] text-[7.4vw] tracking-tighter
             sm:px-[6vw] sm:py-[18vw] sm:leading-[7vw] sm:tracking-tight sm:text-[7vw]

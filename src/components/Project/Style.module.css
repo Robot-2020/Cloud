@@ -1,0 +1,29 @@
+/* .circleIn, .circleInpara{
+    transform-origin: center;
+    transition: all ease 0.3s;
+}
+
+.circleInpara {
+    transition-delay: 0.3s;
+}
+
+.page3Circle:hover .circleIn {
+    transform: scale(1);
+}
+
+.page3Circle:hover .circleInpara {
+    transform: scale(1);
+} */
+
+
+.imageContainer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+    transform: translateY(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
