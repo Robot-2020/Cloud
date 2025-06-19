@@ -8,12 +8,8 @@ import { useEffect } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
 function Loader() {
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual'; // 禁止页面刷新后自动滚动到先前的位置
-    }
 
     useEffect(() => {
-        document.body.style.overflow = "hidden";
         var h5timer = document.querySelector('.part1 h5');
         var grow = 0;
         setInterval(function() {
@@ -40,6 +36,33 @@ function Loader() {
         tl.to('.loader', {
             opacity: 0,
             duration: 0.2,
+            delay: 2.2
+        })
+        tl.from('.page1', {
+            y: 1200,
+            opacity: 0,
+            duration: 0.4,
+            delay: 0.1,
+            ease: Power4
+        })
+        
+        tl.to('.loader', {
+            display: 'none'
+        })
+        tl.from('.header', {
+            opacity:0
+        })
+        tl.from('.firstword', {
+           opacity: 0
+        })
+        tl.from('#hero1 h1, #hero2 h1, #hero3 h2, .hero h3, #hero4 h1', {
+            y: 180,
+            stagger: 0.2,
+        })
+        tl.from('.page2', {
+            y: 800,
+            opacity: 0,
+            duration: 0.2,
             delay: 2.0
         })
         
@@ -51,31 +74,12 @@ function Loader() {
             duration: 0.1,
             ease: Power4
         })
-        tl.from('.navbar', {
-           opacity: 0,
-           duration: 0.2,
-        })
-        tl.from('.firstword', {
-           opacity: 0,
-           duration: 0.2,
-        })
-        // 恢复页面滚动
-        tl.add(() => {
-            document.body.style.overflow = "auto";
-        });
-        tl.from('#hero1 h1, #hero2 h1, #hero2 h2, .hero h2, #hero2 h3', {
-            y: 180,
-            stagger: 0.1,
-        })
-        tl.to('.loader', {
-            display: 'none'
-        })
     }) 
     
   return ( 
     <div>
         <div 
-            className="loader w-full h-full bg-white fixed z-[9] font-[PlinaReg] 
+            className="loader w-full h-full bg-[#0b0b0b] fixed z-[9] font-[PlinaReg] 
             px-[5vw] py-[40vw] leading-[7.8vw] text-[7.4vw] tracking-tighter
             sm:py-[18vw] sm:px-[6vw]  sm:leading-[7vw] sm:tracking-tight sm:text-[7vw]
             xl:text-[5.8vw] xl:leading-[6vw] xl:py-[10vw]"
