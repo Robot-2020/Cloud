@@ -1,0 +1,160 @@
+.horizontalContainer {
+  background-color: #222;
+  color: #ddd;
+    /*   new */
+  --color-shockingly-green: #0ae448;
+  --color-just-black: #0e100f;
+  --color-orangey: #ff8709;
+  --color-lt-green: #abff84;
+  --gradient-macha: linear-gradient(
+    114.41deg,
+    var(--color-shockingly-green) 20.74%,
+    var(--color-lt-green) 65.5%
+  );
+  --gradient-orange-crush: linear-gradient(
+    111.45deg,
+    var(--color-orangey) 19.42%,
+    #f7bdf8 73.08%
+  );
+  --gradient-lipstick: linear-gradient(
+    165.72deg,
+    #f7bdf8 21.15%,
+    #cd237f 81.93%
+  );
+  --gradient-purple-haze: linear-gradient(
+    153.58deg,
+    #f7bdf8 32.25%,
+    #2f3cc0 92.68%
+  );
+  --gradient-emerald-city: linear-gradient(
+    166.9deg,
+    var(--color-shockingly-green) 53.19%,
+    #0085d0 107.69%
+  );
+  --color-ui-gradient: radial-gradient(
+    78.77% 78.77% at 71.71% 30.77%,
+    #f0fcff 0%,
+    #9bedff 67.21%,
+    #98ecff 76.04%,
+    #5be1ff 84.9%,
+    #00bae2 94.79%
+  );
+}
+
+.panel pre.prettyprint {
+  font-size: 20px;
+  text-align: left;
+  width: auto;
+  font-weight: normal;
+  margin: 10px;
+  border: none;
+}
+
+.prettyprint .linenums {
+  padding: 0;
+  list-style: none;
+}
+.prettyprint ol li {
+  background-color: black;
+}
+
+.gray {
+  background: var(--gradient-macha),url(https://assets.codepen.io/16327/noise.png);
+  background-blend-mode: color-dodge
+}
+.blue {
+  background: var(--color-ui-gradient),url(https://assets.codepen.io/16327/noise.png);
+  background-blend-mode: color-dodge
+}
+.orange {
+  background: var(--gradient-orange-crush),url(https://assets.codepen.io/16327/noise.png);
+  background-blend-mode: color-dodge
+}
+
+.red {
+  background: var(--gradient-lipstick),url(https://assets.codepen.io/16327/noise.png);
+  background-blend-mode: color-dodge
+}
+
+.purple {
+  background: var(--gradient-purple-haze),url(https://assets.codepen.io/16327/noise.png);
+  background-blend-mode: color-dodge
+}
+
+.green {
+  background: var(--gradient-emerald-city),url(https://assets.codepen.io/16327/noise.png);
+  background-blend-mode: color-dodge
+}
+
+.box {
+  width: 100px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  background-color: white;
+  border-radius: 8px;
+  color: #222;
+  font-weight: 700;
+  margin-left: 20px;
+  will-change: transform;
+}
+.box.active {
+  background-color: orange;
+  border: 2px solid white;
+}
+
+.description,.final {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  min-height: 100vh;
+}
+
+.container {
+  width: 500%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.panel {
+  width: 100%;
+  height: 100%;
+
+  min-height: 100vh;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+  color: var(--color-just-black);
+}
+
+/* SCROLL DOWN */ 
+.scrollDown {
+  position: absolute; 
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: black;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 16px;
+  overflow: visible;
+}
+
+.scrollDown .arrow {
+  position: relative;
+  top: -4px;
+  margin: 0 auto;
+  width: 20px;
+  height: 20px;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHBhdGggZmlsbD0iYmxhY2siIGQ9Ik00ODMuMiwxOTIuMmMtMjAuNS0yMC41LTUzLjUtMjAuOC03My43LTAuNkwyNTcsMzQ0LjFMMTA0LjUsMTkxLjZjLTIwLjItMjAuMi01My4yLTE5LjktNzMuNywwLjYKCWMtMjAuNSwyMC41LTIwLjgsNTMuNS0wLjYsNzMuN2wxOTAsMTkwYzEwLjEsMTAuMSwyMy40LDE1LjEsMzYuOCwxNWMxMy4zLDAuMSwyNi43LTQuOSwzNi44LTE1bDE5MC0xOTAKCUM1MDMuOSwyNDUuNyw1MDMuNywyMTIuNyw0ODMuMiwxOTIuMnoiLz4KPC9zdmc+);
+  background-size: contain;
+}

@@ -1,0 +1,18 @@
+.page3 {
+  transform: translateZ(0); /* 触发GPU加速 */
+  backface-visibility: hidden; /* 避免渲染瑕疵 */
+  margin-bottom: 0; /* 移除默认外边距 */
+  outline: 1px solid transparent; /* 替代可能的边框 */
+}
+
+.page3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: black;
+  z-index: 2;
+}
+

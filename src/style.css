@@ -1,0 +1,9 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh; /* 关键！ */
+}
+
+html {
+  scrollbar-gutter: stable; /* 预留滚动条空间 */
+}

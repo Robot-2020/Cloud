@@ -1,0 +1,6 @@
+.footTitle:hover {
+    background: linear-gradient(208deg, rgb(255, 255, 255) 0%, rgb(145, 211, 249) 100%) !important; /* 悬停时背景色变为粉色 */
+    transform: scale(1.05); /* 轻微放大 */
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}

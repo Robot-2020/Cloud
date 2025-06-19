@@ -9,7 +9,7 @@ UnderLine.propTypes = {
 };
 
 
-function UnderLine({marginBottom, marginTop}) {
+function UnderLine({marginTop, marginBottom}) {
 
     const path = useRef(null);
     let progress = 0;

@@ -7,4 +7,5 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1000, // The limit is in kilobytes
   },
+  assetsInclude: ['**/*.glb'],
 })

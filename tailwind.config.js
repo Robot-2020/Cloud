@@ -10,6 +10,7 @@ export default {
       md: '768px',
       lg: '1024px',
       xl: '1440px',
+      xxl: '1920px'
     },
     extend: {
       backgroundImage: {
@@ -22,10 +23,36 @@ export default {
         'black-200': '#282732',
         'blue-50': '#839cb5',
         'blue-100': '#2d2d38',
+        'gray': '#f0ece5',
+        accent: 'var(--color-accent)',
+        'accent-pink': 'var(--color-accent-pink)',
       },
       fontFamily: {
         sans: ['Mona Sans', 'sans-serif'], // 自定义字体
       },
+      width: {
+        '5x': '500%' // 自定义类 w-5x 为 500%
+      },
+      translate: {
+        '101': '101%',
+      },
+      keyframes: {
+        marquee: {
+          '0%': {
+            transform: 'translateX(0%)',
+            // 添加will-change优化
+            willChange: 'transform'
+          },
+          '100%': {
+            transform: 'translateX(-50%)',
+            // 确保动画结束时移除优化
+            willChange: 'auto'
+          }
+        }
+      },
+      animation: {
+        marquee: 'marquee 15s linear infinite'
+      }
     },
   },
   plugins: [],

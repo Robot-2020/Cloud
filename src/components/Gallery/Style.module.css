@@ -1,0 +1,7 @@
+.pageCircle:hover .circleIn {
+    transform: scale(1);
+}
+
+.pageCircle:hover .circleInpara {
+    transform: scale(1);
+}
