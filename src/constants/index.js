@@ -9,7 +9,7 @@ const navLinks = [
   },
   {
     name: "CARD",
-    link: "/",
+    link: "/card",
   },
   {
     name: "CONTACT",

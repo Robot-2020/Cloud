@@ -112,7 +112,7 @@ export default function TitleCard({
 
                     {displayOverlayContent && overlayContent && (
                         <motion.div
-                            className="absolute font-[0.5rem] top-5 left-4 z-[2] will-change-transform [transform:translateZ(30px)] border-1 p-2 rounded-full"
+                            className="absolute font-[0.5rem] top-5 left-4 z-[2] will-change-transform [transform:translateZ(30px)] border-1 p-3 rounded-full"
                             style={{ background: "rgba(250, 240, 230, 0.6)" }}
                         >
                             {overlayContent}

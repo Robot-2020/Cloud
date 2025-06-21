@@ -2,6 +2,8 @@ import FlowingMenu from "../../modules/FlowingMenu"
 import styles from "./Style.module.css"
 import React, { useState, useRef } from 'react';
 import { motion } from "framer-motion";
+import ThreadLine from "../../modules/ThreadLine";
+import { throttle } from 'lodash';
 
 const Main = () => {
     // 使用 useRef 创建一个数组，用于存储每个圆球的引用
@@ -51,7 +53,7 @@ const Main = () => {
     };
 
     // 处理鼠标移动事件
-    const handleMouseMove = (event) => {
+    const handleMouseMove = throttle((event) => {
         const mouseX = event.clientX;
         let index = null;
 
@@ -69,7 +71,7 @@ const Main = () => {
         });
 
         setHoveredIndex(index); // 更新 hoveredIndex
-    };
+    }, 50);
 
     const handleMouseLeave = () => {
         setHoveredIndex(null); // 恢复状态
@@ -82,7 +84,7 @@ const Main = () => {
     }, []);
 
     return (
-        <div id="container" className={`page3 ${styles.page3} containerRelative relative h-[80vh] bg-black p-0 m-0 overflow-hidden border-none`}
+        <div id="container" className={`page3 ${styles.page3} containerRelative relative min-h-[80vh] bg-black p-0 m-0 overflow-hidden border-none`}
             onMouseMove={handleMouseMove} // 监听鼠标移动事件
             onMouseLeave={handleMouseLeave}>
 
@@ -114,6 +116,7 @@ const Main = () => {
                                         height: initialHeight[index], // 默认高度
                                         transform: hoveredIndex === index ? 'scaleY(1.5)' : 'scaleY(1)', // 使用transform缩放
                                         transition: 'height 0.3s ease, filter 0.3s ease', // 平滑过渡
+                                        willChange: 'transform, filter, background-color',
                                         filter:
                                             hoveredIndex !== null ? (Math.abs(hoveredIndex - index) <= 2
                                                 ? 'brightness(2.5)' // 当前和邻近的 1 个元素亮度为 1
@@ -178,7 +181,7 @@ const Main = () => {
                             onClick={() => handleBallClick(2)}
                             animate={
                                 animatingBalls[2]
-                                    ? { 
+                                    ? {
                                         scale: [1, 2, 1, 2, 2, 1],
                                         rotate: [0, 0, 180, 180, 90, 0],
                                         borderRadius: ["50%", "30%", "0%", "30%", "0%", "50%"],
@@ -231,6 +234,8 @@ const Main = () => {
                                         height: initialHeight[index], // 默认高度
                                         transform: hoveredIndex === index ? 'scaleY(1.5)' : 'scaleY(1)', // 使用transform缩放
                                         transition: 'height 0.3s ease, filter 0.3s ease', // 平滑过渡
+                                        willChange: 'transform, filter, background-color',
+                                        transformStyle: 'preserve-3d', // 启用硬件加速
                                         filter:
                                             hoveredIndex !== null ? (Math.abs(hoveredIndex - index) <= 2
                                                 ? 'brightness(2.5)' // 当前和邻近的 1 个元素亮度为 1
@@ -249,7 +254,7 @@ const Main = () => {
             {/* Main底部文案 */}
             <div className="w-full">
                 <div className="w-1/3 ml-[2vw] mb-[12vh] text-white font-semibold text-3xl text-start tracking-wide leading-relaxed">
-                    Welcome to the mysterious music planet. The planet will be converted into any element in the universe by absorbing songs. If you want, please try clicking on the stars on the right, and they will start converting music.
+                    Welcome to the mysterious music planet. please try clicking on the stars on the right, and they will start converting.
                 </div>
             </div>
         </div>

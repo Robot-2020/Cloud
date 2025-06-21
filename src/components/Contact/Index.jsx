@@ -6,11 +6,11 @@ import YoungMan from '../../elemenets/YoungMan/YoungMan.jsx';
 
 function Contact() {
     return (
-        <div className='contact' id='contact'>
+        <div className='contact w-full h-screen' id='contact'>
 
-            <div className="relative sm:flex gap-[5vw] w-full px-[4vw] py-[5vw] h-auto sm:px-[4vw] mt-[4vw]">
+            <div className="relative sm:flex gap-[5vw] w-full px-[4vw] py-[5vw] sm:px-[4vw] ">
 
-                <div className="w-full">
+                <div className="w-full mt-[10vh]">
 
                     {/* 标题部分 */}
                     <div className="aboutHeading w-full flex flex-col justify-center items-center overflow-hidden space-y-[-2vh]">
@@ -54,7 +54,7 @@ function Contact() {
 
                     <div className='w-full flex justify-center ml-[11vw]'>
                         {/* 下划线组件，用来添加一个分隔线 */}
-                        <UnderLine marginBottom='3vw' marginTop='3vw' />
+                        <UnderLine marginBottom='5vw' marginTop='5vw' />
                     </div>
 
                     {/* 社交信息、地址和联系方式区域 */}
@@ -106,7 +106,7 @@ function Contact() {
                     {/* 底部的分隔线 */}
                     <div className='w-full flex justify-center ml-[11vw]'>
                         {/* 下划线组件，用来添加一个分隔线 */}
-                        <UnderLine marginBottom='3vw' marginTop='3vw' />
+                        <UnderLine marginBottom='5vw' marginTop='5vw' />
                     </div>
 
                 </div>

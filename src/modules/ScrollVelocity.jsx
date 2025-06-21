@@ -118,7 +118,7 @@ export const ScrollVelocity = ({
         style={parallaxStyle}
       >
         <motion.div
-          className={`${scrollerClassName} flex whitespace-nowrap text-center font-sans text-2xl font-bold tracking-[-0.02em] drop-shadow md:text-[6rem] md:leading-[6rem]`}
+          className={`${scrollerClassName} flex whitespace-nowrap text-center font-sans font-bold tracking-[-0.02em] drop-shadow text-[3vw] md:leading-[6rem]`}
           style={{ x, ...scrollerStyle }}
         >
           {spans}
