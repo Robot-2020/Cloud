@@ -1,6 +1,6 @@
 import Contact from '../../components/Contact/Index';
 
-function ContactSection() {
+function ContactPage() {
     return (
         <div className="contact-page">
             <Contact />
@@ -8,4 +8,4 @@ function ContactSection() {
     );
 }
 
-export default ContactSection;
+export default ContactPage;

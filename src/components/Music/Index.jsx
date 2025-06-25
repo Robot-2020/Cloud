@@ -7,7 +7,6 @@ import styles from './Style.module.css'
 import ScrollVelocity from '../../modules/ScrollVelocity';
 import VolumeSlider from "../../modules/VolumeSlider"
 import ThreadLine from '../../modules/ThreadLine';
-import PersonMusic from '../../elemenets/PersonMusic/PersonMusic';
 import MusicMan from '../../elemenets/MusicMan/MusicMan';
 import FlipTitleCard from "../../elemenets/FlipTitleCard/FlipTitleCard";
 
@@ -76,7 +75,6 @@ const Music = () => {
                         gsap.to(card, {
                             x: 0,
                             rotationY: -360,
-                            scale: 1,
                             opacity: 1,
                             duration: 0.5,
                             ease: 'power2.out',
@@ -140,7 +138,6 @@ const Music = () => {
                 const cardRect = cards[index].getBoundingClientRect();
                 return (window.innerWidth / 2) - (cardRect.left + cardRect.width / 2);
             },
-            scale: 1.1,
             duration: 0.5, // 明确指定持续时间
             ease: 'power2.out',
             overwrite: true, // 确保覆盖其他动画
@@ -153,8 +150,8 @@ const Music = () => {
 
         gsap.to(musicTextsRef.current[index], {
             y: 50 * (1 - index),
-            x: -300,
-            scale: 1.5,
+            x: -250,
+            scale: 1.2,
             duration: 0.3,
             ease: 'power2.out',
         });
@@ -170,12 +167,6 @@ const Music = () => {
             ease: 'power2.out'
         })
         handlePlayPause(index, true);
-
-        gsap.from(listenHumanRef.current, { duration: 2, drawSVG: 0 }, 0.1);
-
-        const cx = motionValue(100)
-
-        svgEffect(listenHumanRef.current, { cx })
     };
 
     useEffect(() => {
@@ -204,13 +195,12 @@ const Music = () => {
                 </div>
             </div>
 
-            <div ref={listenHumanRef} className='absolute h-screen flex justify-center left-[-4vw] mt-[12.5vh] -z-10'>
+            <div ref={listenHumanRef} className='absolute h-screen flex justify-center mt-[12.5vh] '>
                 <MusicMan />
             </div>
 
-
-            <div className={`titleCardContainer ${styles.titleCardContainer} absolute w-full h-screen mt-[20vh] flex flex-row justify-center space-x-[2vw] items-center `}>
-                <div className={`titleCard z-10 ${styles.titleCard}`} ref={(el) => (titleCardsRef.current[0] = el)} onClick={() => handleCardClick(0)}>
+            <div className={`titleCardContainer ${styles.titleCardContainer} absolute w-full h-screen mt-[20vh] flex flex-row justify-center space-x-[2vw] items-center`}>
+                <div className={`titleCard  z-10 ${styles.titleCard}`} ref={(el) => (titleCardsRef.current[0] = el)} onClick={() => handleCardClick(0)}>
                     <FlipTitleCard
                         imageSrc="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/img/IMG_1522.JPG"
                         backImgSrc="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/img/IMG_1522.JPG"
@@ -286,21 +276,21 @@ const Music = () => {
                 </div>
             </div>
 
-            <div className="absolute flex flex-col text-base font-mono text-black ml-[85vw] mt-[65vh] space-y-6 z-0">
+            <div className="absolute flex flex-col text-base font-mono text-black ml-[82vw] mt-[60vh] space-y-5">
                 <div ref={(el) => (musicTextsRef.current[0] = el)} className="flex flex-row gap-10">
                     <p>01</p>
                     <p>TOO DEEP TO TURN BACK</p>
-                    <audio ref={(el) => (audiosRef.current[0] = el)} src="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/music/DanielCaesar.flac"/>
+                    <audio ref={(el) => (audiosRef.current[0] = el)} src="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/music/DanielCaesar.flac" />
                 </div>
                 <div ref={(el) => (musicTextsRef.current[1] = el)} className="flex flex-row gap-10">
                     <p>02</p>
                     <p>this is how you fall in love</p>
-                    <audio ref={(el) => (audiosRef.current[1] = el)} src="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/music/ZuckerCutler.flac"/>
+                    <audio ref={(el) => (audiosRef.current[1] = el)} src="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/music/ZuckerCutler.flac" />
                 </div>
                 <div ref={(el) => (musicTextsRef.current[2] = el)} className="flex flex-row gap-10">
                     <p>03</p>
                     <p>sad sad</p>
-                    <audio ref={(el) => (audiosRef.current[2] = el)} src="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/music/Ollie.flac"/>
+                    <audio ref={(el) => (audiosRef.current[2] = el)} src="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/music/Ollie.flac" />
                 </div>
             </div>
 
@@ -337,12 +327,14 @@ const Music = () => {
                 </div>
             </div>
 
-            <div className='CardContentMid flex flex-col justify-center items-center gap-[2vh] mt-[8vh]'>
-                <div className='flex flex-col justify-center items-center text-center leading-[10vh]'>
+            <div className='CardContentMid flex flex-col justify-center items-center gap-[2vh] mt-[6vh]'>
+                <div className='flex flex-col justify-center items-center text-center leading-[12vh]'>
                     <p className='text-[6vw] font-bold uppercase'>Click cards</p>
                     <p className='text-[6vw] font-bold uppercase'>to play music</p>
                 </div>
-                <p>Please check your volume first.</p>
+                <div className=''>
+                    <p>Please check your volume first.</p>
+                </div>
                 <div className=''>
                     <VolumeSlider
                         leftIcon={<img src="/img/volume1.svg" alt='volume1' width={60} />}

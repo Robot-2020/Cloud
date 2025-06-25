@@ -4,10 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import TrueFocus from '../../modules/TrueFocus';
 import styles from './Style.module.css'
 import YoungMan from '../../elemenets/YoungMan/YoungMan'
-import TitleCard from "../../modules/TitleCard";
 import LoadingThreeDotsPulse from "../../elemenets/LoadingDots/LoadingThreeDotsPulse"
 import LightDark from "../../modules/LightDark";
 import FlipTitleCard from "../../elemenets/FlipTitleCard/FlipTitleCard";
+import { useHeroAnimations } from "../../kits/useHeroAnimations";
 
 function Hero() {
 
@@ -32,61 +32,61 @@ function Hero() {
 
   gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  const heroTitleRef = useRef(null);
-  const heroDescRef = useRef(null);
-  const titleCardsRef = useRef([]);
+  const { titleHeadRef, heroTitleRef, heroDescRef, titleCardsRef } = useHeroAnimations();
 
-  useEffect(() => {
+  if (titleCardsRef.current.length === 3 && // 确保三个卡片都已连接
+    titleCardsRef.current.every(ref => ref !== null) // 确保每个 ref 都不为 null
+  ) {
 
     titleCardsRef.current.forEach((titleCard, index) => {
       gsap.to(titleCard, {
-        y: `${window.innerHeight / 1.6}`,
+        y: `${window.innerHeight / 1.55}`,
         x: index == 0 ? "+=15vw" : index == 1 ? "0" : "-=15vw",
         rotation: index == 0 ? -25 : index == 1 ? "0" : 25,
-        opacity: 0.1,
+        opacity: 0,
         scale: 0.6,
         force3D: true,
         scrollTrigger: {
           trigger: titleCard,
-          start: 'center 50%',  // 修改为更可靠的触发点
-          end: 'center 30%',
+          start: 'center 30%',  // 修改为更可靠的触发点
+          end: 'bottom 10%',
           scrub: 1,
         },
       });
     });
+  }
 
-  }, []);
 
   return (
-    <div id="hero" className={`page1 hero w-full h-screen relative overflow-hidden`}>
+    <div id="hero" className={`page1 hero w-full min-h-[110vh] relative overflow-hidden`}>
 
       <div className="w-full flex flex-row m-[2.5vw]">
         <div className="youngMan w-[10vw]">
           <YoungMan />
         </div>
 
-        <div className="flex-1 flex flex-col"> {/* flex-1 占据剩余空间 */}
+        <div ref={titleHeadRef} className="titleHead flex-1 flex flex-col"> {/* flex-1 占据剩余空间 */}
           <div className="flex-1 flex items-center"> {/* 添加内边距 */}
             <div className="flex gap-[1vw] justify-start">
-                {Array.from({ length: 3 }).map((_, index) => (
-                  <StarIcon key={index} />
-                ))}
+              {Array.from({ length: 3 }).map((_, index) => (
+                <StarIcon key={index} />
+              ))}
               <p className="text-sm ml-[8vw]">
                 2022brave
               </p>
             </div>
             <div className="flex justify-start gap-[10vw] mr-[5vw] ">
               {Array.from({ length: 3 }).map((_, index) => (
-                  <StarIcon key={index} />
-                ))}
+                <StarIcon key={index} />
+              ))}
             </div>
             <div className="flex gap-[1vw] justify-start">
               <p className="text-sm mr-[10vw]">
                 2025love
               </p>
               {Array.from({ length: 3 }).map((_, index) => (
-                  <StarIcon key={index} />
-                ))}
+                <StarIcon key={index} />
+              ))}
               <p>
               </p>
             </div>
@@ -113,7 +113,7 @@ function Hero() {
         <Lanyard position={[0, 0, 18]} gravity={[0, -20, 0]} fov={20} />
       </div> */}
 
-      <div className={`titleCards flex flex-row justify-center items-center space-x-[2vw] mt-[5vh]`}>
+      <div className={`titleCards flex flex-row justify-center items-center mt-[10vh] space-x-[2vw]`}>
         <div ref={(tc) => titleCardsRef.current[0] = tc} >
           <FlipTitleCard
             imageSrc="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/img/20230919205814.jpg"
@@ -131,16 +131,16 @@ function Hero() {
             displayOverlayContent={true}
             overlayContent={
               <p className="tilted-card-caption ">
-                Rule No.1 - Brave
+                Rule #1: Brave
               </p>
             }
             backTitle="Brave"
-            backContent="Brave souls get the best views… and the best stories!"
+            backContent="‘I’ll do it tomorrow’ = Never. Just leap!"
           />
         </div>
 
         <div ref={(tc) => titleCardsRef.current[1] = tc} >
-          <FlipTitleCard ref={(tc) => titleCardsRef.current[1] = tc}
+          <FlipTitleCard
             imageSrc="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/img/175023162600-830.jpg"
             backImgSrc="https://diveintodream.oss-cn-shenzhen.aliyuncs.com/img/175012007100-955.jpg"
             altText="Jeremy Zucker/Chelsea Cutler - brent"
@@ -156,7 +156,7 @@ function Hero() {
             displayOverlayContent={true}
             overlayContent={
               <p className="tilted-card-caption ">
-                Step Two - Love
+                Law #2: Love
               </p>
             }
             backTitle="Love"
@@ -181,7 +181,7 @@ function Hero() {
             displayOverlayContent={true}
             overlayContent={
               <p className="tilted-card-caption ">
-                Final Boss Tip - Swag
+                Key #3: Swag
               </p>
             }
             backTitle="Swag"
@@ -193,7 +193,7 @@ function Hero() {
 
       <div ref={heroDescRef} className={`heroDesc ${styles.heroDesc} absolute left-10 bottom-10 text-left break-words 
         w-[50vw] lg:w-[38vw]`}>
-        <div className="flex flex-row text-[0.6rem] justify-center gap-1 p-1 items-center bg-black text-white w-[6.5vw]">
+        <div className="flex flex-row text-[0.5rem] justify-center gap-1 p-1 items-center bg-black text-white w-[8vw]">
           <span>Academic</span>
           <img src="/img/icon.svg" alt="emoji" width="30" height="30" style={{ display: "inline-block" }}></img>
           <span >Work Career</span>
@@ -208,7 +208,7 @@ function Hero() {
       {/* <div className="absolute top-[1.5vh] right-[3.8vw] z-10">
         <LightDark />
       </div> */}
-      <div className="absolute bottom-[10vh] left-[45vw]">
+      <div className="absolute bottom-[10vh] left-[47.5vw]">
         <LoadingThreeDotsPulse />
       </div>
     </div>

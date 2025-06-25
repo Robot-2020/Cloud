@@ -13,7 +13,7 @@ const BlogContent = () => {
     size: 5,
     total: 0
   });
-  
+
   // API 调用函数
   const getArticles = (params) => {
     return axios.get('https://www.diveintodream.cn/api/articles/all', { params });
@@ -63,49 +63,60 @@ const BlogContent = () => {
   }, [pagination.current]);
 
   return (
-    <div>
-      <div className="w-full min-h-screen p-8">
-        <div className="w-full mx-auto">
-          <a href="https://diveintodream.cn/vue-app/" className="text-3xl font-bold mb-8 flex justify-center">My Blog</a>
+    <div className='w-full h-screen'>
 
-          {/* Blog table */}
-          <div className="overflow-x-auto">
-            <table className="w-full rounded-lg overflow-hidden">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="py-3 px-4 text-left">Article Name</th>
-                  <th className="py-3 px-4 text-left">Type</th>
-                  <th className="py-3 px-4 text-left">Description</th>
-                  <th className="py-3 px-4 text-left">Date</th>
+      <div className="w-full mx-auto">
+
+        <div className="overflow-x-auto shadow-sm rounded-lg">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gradient-to-r from-blue-50 to-indigo-50">
+              <tr>
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Article Name</th>
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Type</th>
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Description</th>
+                <th className="py-3 px-6 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Date</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {articles.map((article, index) => (
+                <tr
+                  key={index}
+                  className="hover:bg-gray-50 transition-colors duration-150"
+                >
+                  <td className="py-4 px-6 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {article.articleTitle}
+                  </td>
+                  <td className="py-4 px-6 whitespace-nowrap text-sm text-gray-600">
+                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                      {article.categoryName}
+                    </span>
+                  </td>
+                  <td className="py-4 px-6 text-sm text-gray-600 max-w-xs truncate">
+                    {article.articleContent.substring(0, 50)}
+                  </td>
+                  <td className="py-4 px-6 whitespace-nowrap text-sm text-gray-500">
+                    {article.createTime}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {articles.map((article, index) => (
-                  <tr key={index} className="text-2xl">
-                    <td className="py-4 px-4 border-b border-gray-200 pl-[2vw]">{article.articleTitle}</td>
-                    <td className="py-4 px-4 border-b border-gray-200">{article.categoryName}</td>
-                    <td className="py-4 px-4 border-b border-gray-200">{article.articleContent.substring(0, 50)}</td>
-                    <td className="py-4 px-4 border-b border-gray-200">{article.createTime}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* 分页控件 */}
-          <div className='w-full flex justify-center'>
-            <Pagination
-              current={pagination.current}
-              pageSize={pagination.size}
-              total={pagination.total}
-              onChange={handlePageChange}
-              style={{ marginTop: "30px", textAlign: "center" }}
-              showSizeChanger={false} // 隐藏每页条数切换器（可选）
-            />
-          </div>
-          
+              ))}
+            </tbody>
+          </table>
         </div>
+
+        <div className='w-full flex justify-center'>
+          <Pagination
+            current={pagination.current}
+            pageSize={pagination.size}
+            total={pagination.total}
+            onChange={handlePageChange}
+            style={{ marginTop: "30px", textAlign: "center" }}
+            showSizeChanger={false} // 隐藏每页条数切换器（可选）
+          />
+        </div>
+
       </div>
+
+
     </div>
   );
 };

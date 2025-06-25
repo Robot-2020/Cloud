@@ -23,9 +23,8 @@
 .titleCard {
   display: flex;
   position: relative; /* 使其可以定位 */
-  scale: 1;
-  opacity: 1;
   transform: translateX(50px);
+  will-change: transform, opacity; /* 优化性能 */
 }
 
 .titleCard:nth-child(1) {

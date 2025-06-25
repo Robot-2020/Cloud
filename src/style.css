@@ -7,3 +7,7 @@ body, html {
 html {
   scrollbar-gutter: stable; /* 预留滚动条空间 */
 }
+
+html, body {
+  overflow-x: hidden; /* 禁止横向滚动 */
+}

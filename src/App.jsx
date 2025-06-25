@@ -8,35 +8,37 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import HomePage from './pages/HomePages';
 import BlogPage from './pages/BlogPages';
-import ContactSection from './pages/ContactPage';
+import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer/Index';
 import BlogDetail from './components/BlogDetail/Index';
-import Loader from './components/Loader/Index';
-import { useState } from 'react';
-
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+import Lenis from "@studio-freight/lenis";
 
 function App() {
 
   const { scrollYProgress } = useScroll();
 
-  const [isLoading, setIsLoading] = useState(true);
-
   useLayoutEffect(() => {
-    // 确保DOM已加载
-    ScrollSmoother.create({
-      smooth: 3, // 平滑时间（秒）
-      effects: true, // 启用效果
-      smoothTouch: 0.1, // 触摸设备的平滑度
-      normalizeScroll: true, // 标准化滚动行为
-      ignoreMobileResize: true, // 避免移动端抖动
+    const lenis = new Lenis({
+      lerp: 0.05, // 平滑度（0-1，越小越平滑）
+      wheelMultiplier: 0.7, // 小于1 = 降低滚轮灵敏度
+      smoothWheel: true, // 启用鼠标滚轮平滑
     });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy(); // 清理
+    };
   }, []);
 
   return (
     <>
-      <motion.div
-        id="scroll-indicator"
+      <motion.div id="scroll-indicator"
         style={{
           scaleX: scrollYProgress,
           position: "fixed",
@@ -45,10 +47,9 @@ function App() {
           right: 0,
           height: 10,
           originX: 0,
-          backgroundColor: "#ff0088",
+          backgroundColor: "#FF82AB",
         }}
       />
-
       <div id="smooth-wrapper">
         {/* <Loader /> */}
         <div className='' style={{ background: "#FAF4EC" }} id="smooth-content">
@@ -65,9 +66,9 @@ function App() {
               <main>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
-                  <Route path="contact" element={<ContactSection />} />
+                  <Route path="contact" element={<ContactPage />} />
                   <Route path="blog" element={<BlogPage />}>
-                    <Route path=":id" element={<BlogDetail />} />
+                    {/* <Route path=":id" element={<BlogDetail />} /> */}
                   </Route>
                 </Routes>
               </main>

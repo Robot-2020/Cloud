@@ -7,7 +7,7 @@ function BlogPage() {
         <div className="blog-page">
             <BlogHero />
             <Overview />
-            <BlogContent />
+            {/* <BlogContent /> */}
         </div>
     );
 }

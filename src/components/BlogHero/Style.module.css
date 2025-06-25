@@ -5,3 +5,8 @@
 .pageCircle:hover .circleInpara {
     transform: scale(1);
 }
+
+.heroDesc {
+  transform: translateY(var(--scroll-y, 0));
+  transition: transform 0.01s linear; /* 平滑效果 */
+}

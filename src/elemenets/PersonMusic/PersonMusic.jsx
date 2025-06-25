@@ -3,12 +3,6 @@ import styles from './Style.module.css'
 
 const PersonMusic = () => {
 
-    // 一次性为所有SVG元素添加无限循环
-    // 开启循环
-    document.querySelectorAll('[class^="svg-elem-"]').forEach(el => {
-        el.style.setProperty('--loop', 'infinite');
-    });
-
     return (
         <div className="">
 

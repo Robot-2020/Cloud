@@ -8,10 +8,6 @@ const navLinks = [
     link: "/blog",
   },
   {
-    name: "CARD",
-    link: "/card",
-  },
-  {
     name: "CONTACT",
     link: "/contact",
   },

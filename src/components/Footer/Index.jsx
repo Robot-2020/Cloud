@@ -19,7 +19,7 @@ const Footer = () => {
                         <div className='flex flex-row items-center justify-center text-center p-0 m-0' style={{ background: "linear-gradient(208deg,rgba(255, 207, 255, 1) 0%, rgba(255, 229, 173, 1) 73%)" }}>
                             <div className={`blogControl ${styles.footTitle} w-auto gap-1 flex items-center border-2 p-2 text-black text-base font-medium`} >
                                 <img src="/img/blogs.svg" width={28} height={28} alt='cake'></img>
-                                <a href="/blog">
+                                <a href="https://diveintodream.cn/vue-app" className="inline-block" target="_blank" > 
                                     Check my blogs
                                 </a>
                             </div>

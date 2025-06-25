@@ -108,7 +108,7 @@ const Loader = ({ onLoadComplete }) => {
                     textRevealTl.to(
                         span,
                         {
-                            duration: 0.5,
+                            duration: 0.3,
                             scrambleText: {
                                 text: originalText,
                                 chars: specialChars,
@@ -141,22 +141,24 @@ const Loader = ({ onLoadComplete }) => {
 
                     // 对这些随机选择的元素应用故障效果。
                     randomSpans.forEach((span) => {
-                        const text = span.textContent || span.getAttribute("data-original-text");
-                        glitchTl.to(
-                            span,
-                            {
-                                scrambleText: {
-                                    text: text,
-                                    chars: specialChars,
-                                    revealDelay: 0,
-                                    speed: 0.1,
+                        if (span != null) {
+                            const text = span.textContent || span.getAttribute("data-original-text");
+                            glitchTl.to(
+                                span,
+                                {
+                                    scrambleText: {
+                                        text: text,
+                                        chars: specialChars,
+                                        revealDelay: 0,
+                                        speed: 0.1,
+                                    },
+                                    duration: 0.2,
+                                    ease: "none",
+                                    repeat: 1
                                 },
-                                duration: 0.2,
-                                ease: "none",
-                                repeat: 1
-                            },
-                            Math.random() * 0.5
-                        )
+                                Math.random() * 0.3
+                            )
+                        }
                     });
 
                     return glitchTl;
@@ -180,7 +182,7 @@ const Loader = ({ onLoadComplete }) => {
 
             // 在动画过程中，实时更新进度条，确保进度条与主动画同步。
             tl.eventCallback("onUpdate", () => {
-                const progress = Math.min(99, tl.progress() * 115);
+                const progress = Math.min(99, tl.progress() * 120);
                 updateProgress(progress);
             })
 
@@ -194,10 +196,10 @@ const Loader = ({ onLoadComplete }) => {
                     loaderRef.current,
                     {
                         y: "-100%",
-                        duration: 0.5,
+                        duration: 0.6,
                         ease: "power2.out",
                     },
-                    ">-=0.2" // 紧接着向上滑动
+                    "+=0.05" // 紧接着向上滑动
                 )
                 .call(() => {
                     document.body.classList.remove('body-no-scroll');
@@ -210,7 +212,7 @@ const Loader = ({ onLoadComplete }) => {
         animateTerminalPreloader();
 
 
-    },[onLoadComplete]);
+    }, [onLoadComplete]);
 
     return (
         <div ref={loaderRef} className={`loader ${styles.heroRoot} w-full h-screen`}>

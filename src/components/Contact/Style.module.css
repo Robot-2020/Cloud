@@ -1,5 +1,15 @@
-.footText:hover {
-    font-family: 'silkSerif';
+.footText1 {
+    -webkit-text-stroke: 1px #e95f8d;
+    color: transparent;
+} 
+
+.footText1:hover {
+    font-family: inherit; /* 继承父元素字体 */
+    -webkit-text-stroke: 0; /* 无描边 */
+    color: inherit; /* 继承父元素颜色 */
+} 
+
+.footText2:hover {
     -webkit-text-stroke: 1px #e95f8d;
     color: transparent;
 } 

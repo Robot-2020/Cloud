@@ -4,7 +4,7 @@ import styles from './Style.module.css'
 const WritingMan = () => {
   return (
     <div>
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:v="https://svgstorm.com" viewBox="0 120 1024 1024" width="1024" height="100%">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:v="https://svgstorm.com" viewBox="0 240 1024 1024" width="1024" height="100%">
 <g fill="None" fillOpacity="0.0" stroke="#FDFDFE" strokeOpacity="1.00" strokeWidth="0.3"><path d="
 M 0.00 1024.00 
 L 1024.00 1024.00

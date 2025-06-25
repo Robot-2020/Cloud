@@ -3,19 +3,20 @@ import UnderLine from '../Underline/Index.jsx'
 import styles from './Style.module.css'
 import { socialLinks } from "../../constants/index.js";
 import YoungMan from '../../elemenets/YoungMan/YoungMan.jsx';
+import CircularText from '../../modules/CircularText.jsx'
 
 function Contact() {
     return (
-        <div className='contact w-full h-screen' id='contact'>
+        <div className='contact w-full min-h-[120vh]' id='contact'>
 
-            <div className="relative sm:flex gap-[5vw] w-full px-[4vw] py-[5vw] sm:px-[4vw] ">
+            <div className="relative sm:flex gap-[5vw] w-full px-[4vw] py-[5vw]">
 
-                <div className="w-full mt-[10vh]">
+                <div className="w-full">
 
                     {/* 标题部分 */}
                     <div className="aboutHeading w-full flex flex-col justify-center items-center overflow-hidden space-y-[-2vh]">
                         {/* 底部的大标题 */}
-                        <h1 className={`footText ${styles.footText} tracking-tighter
+                        <h1 className={`footText ${styles.footText1} tracking-tighter
                             text-[5vw] font-extrabold sm:tracking-normal uppercase`}>
                             24/7
                         </h1>
@@ -28,8 +29,8 @@ function Contact() {
                                     CLOUD
                                 </div>
                             </div>
-                            <div className={`footText ${styles.footText} tracking-tighter
-                                text-[5vw] font-extrabold sm:tracking-normal uppercase`}>
+                            <div className={`footText ${styles.footText2} tracking-tighter
+                                text-[4vw] font-extrabold sm:tracking-normal uppercase`}>
                                 chat with me
                             </div>
                             <div className='flex flex-row items-center gap-5'>
@@ -58,16 +59,24 @@ function Contact() {
                     </div>
 
                     {/* 社交信息、地址和联系方式区域 */}
-                    <div className=" sm:flex items-center justify-between ml-[13vw] mr-[13vw] gap-[12vw]">
+                    <div className=" sm:flex items-center justify-between px-[12vw] gap-[5vw]">
                         {/* 联系方式部分 */}
-                        <div className="first flex flex-col gap-10">
-                            <h3 className="sm:text-[1.2vw] font-semibold">Say Hi!</h3>
-                            <div className="youngMan overflow-hidden scale-125 ml-[1vw]">
-                                <YoungMan />
-                            </div>
+                        <div className="first flex flex-col gap-10 mr-[2vw]">
+                            <h3 className="sm:text-[1.5vw] font-semibold">Say Hi!</h3>
                         </div>
 
-                        <div className="middle space-y-2 ml-[5vw]">
+                        <div>
+                            <a href="https://diveintodream.cn/vue-app" target="_blank" rel="noopener noreferrer">
+                                <CircularText
+                                    text="Java*Spring*DB*Web*Design*"
+                                    onHover="goBonkers"
+                                    spinDuration={5}
+                                    className="font-bold text-pink-500 uppercase"
+                                />
+                            </a>
+                        </div>
+
+                        <div className="middle space-y-2 ">
                             {/* 社交部分标题 */}
                             <div className="flex gap-5 flex-row mb-[1.5vw] sm:text-[1.2vw] text-[1vw] items-center justify-start text-center  text-black text-xl font-medium">
                                 <img src="/img/emoji/heart.svg" alt="emoji" width="40" height="40" className="inline-block" />
